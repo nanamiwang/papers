@@ -1,19 +1,58 @@
-## Frame id assignments
+## Tx Frame Id Assignments
 - EPS: Static Slot 6 
-- Drive Assist Front Camera: Static Slot 65
+- Drive Assist Front Camera: Dynamic Slot 65
 
 ## Signals
 ### Steering Angle Sensor 1
-#### Settings
 ```
 Frame Id: 6
-Byte Offset: 20
-Bits: 12
+Start Bit: 20
+Bit Length: 12
 Endianess: Little Endian
 Sign: Signed
-Sign Mask: 0x10 & right
+Sign Mask: 0x10
+Offset: 0
 Scale: 0.153
 Range: [-540, 540] ???
+```
+
+### Steering Angle Sensor 2
+```
+Frame Id: 6
+Start Bit: 26
+Bit Length: 12
+Endianess: Little Endian
+Sign: Signed
+Sign Mask: 0x80
+Offset: 0
+Scale: 0.153
+Range: [-540, 540] ???
+```
+
+### Steering Torque Sensor
+```
+Frame Id: 6
+Start Bit: 29
+Bit Length: 9
+Endianess: Little Endian
+Sign: Signed
+Sign Mask: 0x80
+Offset: 0
+Scale: 0.02
+Range: [-3.0, 3.0]
+```
+
+### LKAS Assist Torque Request
+```
+Frame Id: 65
+Start Bit: 8
+Bit Length: 9
+Endianess: Big Endian
+Sign: Signed
+Sign Mask: 0x10
+Offset: 300 ???
+Scale: 0.01 ???
+Range: [-3.0, 3.0]
 ```
 
 ### Captured Frames Samples:
@@ -40,11 +79,13 @@ Angle 2: -491.13
 
 Camera Frame 1:
 Offset: 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33
-Data:   60:00:40:4F:05:62:3B:4B:01:4D:00:00:00:00:00:00:73:0B:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:E0 
-assist torque raw 333 converted 0.33
+Data:   60:00:40:4F:05:62:3B:4B:01:33:00:00:00:00:00:00:A1:0A:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:E0 
+Assist Torque Request Raw: 0x133
+Assist Torque Request: 0.07
 
 Camera Frame 2:
 Offset: 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33
-Data:   60:00:40:4F:05:62:3B:4B:01:30:00:00:00:00:00:00:84:1D:FA:00:00:80:63:30:10:BD:06:00:05:FE:07:00:00:F0 
-assist torque raw 304 converted 0.04
+Data:   60:00:40:4F:05:62:3B:4B:01:34:00:00:00:00:00:00:51:1F:FA:00:00:80:46:30:14:BF:0A:00:05:FE:07:00:00:F0 
+Assist Torque Request Raw: 0x134
+Assist Torque Request:0.08
 ```
