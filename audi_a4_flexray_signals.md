@@ -2,7 +2,7 @@
 - EPS: Static Slot 6 
 - Drive Assist Front Camera: Dynamic Slot 65
 
-## Signals
+## EPS Tx Signals
 ### Steering Torque Sensor
 ```
 Frame Id: 6
@@ -56,6 +56,7 @@ Scale: 0.153
 Range: [-540, 540]
 ```
 
+## Drive Assist Front Camera Tx Signals
 ### LKA Assist Torque Request
 ```
 Frame Id: 65
